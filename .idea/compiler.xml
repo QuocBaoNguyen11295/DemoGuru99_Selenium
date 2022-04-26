@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Guru99Demo" />
+        <module name="DemoGuru99_Selenium" />
       </profile>
     </annotationProcessing>
   </component>
