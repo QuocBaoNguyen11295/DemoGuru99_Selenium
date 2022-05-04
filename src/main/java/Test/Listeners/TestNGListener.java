@@ -94,7 +94,7 @@ public class TestNGListener implements ITestListener {
 
     @AfterTest
     public void afterTest() {
-        closeBrowser();
+        //closeBrowser();
     }
 
     public void navigateTo(String url) {

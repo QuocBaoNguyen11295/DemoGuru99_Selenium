@@ -3,6 +3,7 @@ package Test.TestCases;
 import Test.Listeners.ReportListener;
 import Test.Listeners.TestNGListener;
 import Test.Pages.*;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -18,7 +19,7 @@ public class EditCustomerTC extends TestNGListener {
     EditCustomerPageForCustomerID editCustomerPageForCustomerID;
     EditCustomer editCustomer;
     String customerID;
-    @Test(description = "precondition steps",priority = 0)
+    @BeforeTest
     public void precondition_steps(){
         login = new LoginPage(driver);
         login.loginToGuru99();

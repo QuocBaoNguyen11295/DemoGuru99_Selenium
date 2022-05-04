@@ -3,6 +3,7 @@ package Test.TestCases;
 import Test.Listeners.ReportListener;
 import Test.Listeners.TestNGListener;
 import Test.Pages.*;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -18,7 +19,7 @@ public class DeleteCustomerTC extends TestNGListener {
     CustomerRegisterSuccessfullyPage customerRegisterSuccessfullyPage;
 
     DeleteCustomer deleteCustomer;
-    @Test(priority = 0)
+    @BeforeTest
     public void precondition_test(){
         login = new LoginPage(driver);
         login.loginToGuru99();

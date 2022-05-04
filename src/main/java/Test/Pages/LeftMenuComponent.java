@@ -10,6 +10,7 @@ public class LeftMenuComponent extends BasePage {
     private By LnkDeleteCustomer = By.xpath("//a[normalize-space()='Delete Customer']");
 
     private By LnkNewAccount = By.xpath("//a[normalize-space()='New Account']");
+    private By LnkDeleteAccount = By.xpath("//a[normalize-space()='Delete Account']");
     public LeftMenuComponent(WebDriver driver){
         this.driver = driver;
     }
@@ -27,4 +28,7 @@ public class LeftMenuComponent extends BasePage {
     }
 
     public void clickLnkNewAccount(){ clickButton(LnkNewAccount); }
+    public void clickLnkDeleteAccount(){
+        clickButton(LnkDeleteAccount);
+    }
 }
