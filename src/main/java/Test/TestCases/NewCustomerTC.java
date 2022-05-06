@@ -6,6 +6,7 @@ import Test.Pages.LeftMenuComponent;
 import Test.Pages.LoginPage;
 import Test.Pages.ManagerPage;
 import Test.Pages.NewCustomerPage;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ public class NewCustomerTC extends TestNGListener {
     LeftMenuComponent leftMenuComponent;
     @Test(description = "Customer id cannot be empty")
     public void tc01(){
+        super.beforeTest();
         login = new LoginPage(driver);
         login.loginToGuru99();
         manager = new ManagerPage(driver);
@@ -27,6 +29,10 @@ public class NewCustomerTC extends TestNGListener {
         newCustomer.inputCustomerName("");
         newCustomer.pressTABFromCustomerName();
         newCustomer.shouldShowTheMessageForNewCustomerAs("Customer name must not be blank");
+    }
+    @AfterTest
+    public void afterTest() {
+        closeBrowser();
     }
     @DataProvider(name = "Data-provider-customer-name")
     public Object[][] dpCustomerName(){

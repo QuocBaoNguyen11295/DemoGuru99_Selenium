@@ -86,16 +86,11 @@ public class TestNGListener implements ITestListener {
     }
 
 
-    @BeforeTest
     public void beforeTest() {
         driver = setupDriver("chrome");
         navigateTo(URL);
     }
 
-    @AfterTest
-    public void afterTest() {
-        //closeBrowser();
-    }
 
     public void navigateTo(String url) {
         driver.get(url);

@@ -1,37 +1,33 @@
 package Test.TestCases;
 
 import Test.Listeners.TestNGListener;
-import Test.Pages.DeleteAccount;
 import Test.Pages.LeftMenuComponent;
 import Test.Pages.LoginPage;
-import Test.Pages.ManagerPage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import Test.Pages.MiniStatement;
+import org.testng.annotations.*;
 
-public class DeleteAccountTC extends TestNGListener {
+import java.time.Duration;
+
+public class MiniStatementTC extends TestNGListener {
     LoginPage loginPage;
-    ManagerPage managerPage;
     LeftMenuComponent leftMenuComponent;
-    DeleteAccount deleteAccount;
+    MiniStatement miniStatement;
     @BeforeTest
     public void precondition_test(){
         super.beforeTest();
         loginPage = new LoginPage(driver);
         loginPage.loginToGuru99();
-        managerPage = new ManagerPage(driver);
         leftMenuComponent = new LeftMenuComponent(driver);
-        leftMenuComponent.clickLnkDeleteAccount();
-        deleteAccount = new DeleteAccount(driver);
+        leftMenuComponent.clickLnkMiniStatement();
+        miniStatement = new MiniStatement(driver);
     }
     @AfterTest
     public void afterTest() {
         closeBrowser();
     }
-    @DataProvider(name = "Data-provider-account-id")
-    public Object[][] dpAccountID(){
-        return new Object[][]{
+    @DataProvider(name = "Data-provider-mini-statement")
+    public Object[][] dpMiniStatement(){
+        return new Object[][] {
                 {"","Account Number must not be blank"},
                 {"1234","Characters are not allowed"},
                 {"Acc123","Characters are not allowed"},
@@ -42,10 +38,12 @@ public class DeleteAccountTC extends TestNGListener {
         };
     }
 
-    @Test(dataProvider = "Data-provider-account-id",priority = 1)
-    public void da01_da02_da03_da04_da05(String value,String expectedResult){
-        deleteAccount.inputAccountID(value);
-        deleteAccount.pressTABFromAccountID();
-        deleteAccount.shouldShowTheMessageForAccountIDAs(expectedResult);
+    @Test(dataProvider = "Data-provider-mini-statement")
+    public void ms01_ms02_ms03_ms04_ms05(String value,String expectedResult){
+        miniStatement.inputTxtAccountNo(value);
+        miniStatement.pressTABFromTxtAccountNo();
+        miniStatement.shouldShowTheMessageForAccountNo(expectedResult);
     }
+
+
 }

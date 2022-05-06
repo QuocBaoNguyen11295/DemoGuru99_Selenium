@@ -11,6 +11,7 @@ public class LeftMenuComponent extends BasePage {
 
     private By LnkNewAccount = By.xpath("//a[normalize-space()='New Account']");
     private By LnkDeleteAccount = By.xpath("//a[normalize-space()='Delete Account']");
+    private By LnkMiniStatement = By.xpath("//a[@href='MiniStatementInput.php']");
     public LeftMenuComponent(WebDriver driver){
         this.driver = driver;
     }
@@ -30,5 +31,9 @@ public class LeftMenuComponent extends BasePage {
     public void clickLnkNewAccount(){ clickButton(LnkNewAccount); }
     public void clickLnkDeleteAccount(){
         clickButton(LnkDeleteAccount);
+    }
+
+    public void clickLnkMiniStatement(){
+        clickButton(LnkMiniStatement);
     }
 }

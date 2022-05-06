@@ -3,10 +3,7 @@ package Test.TestCases;
 import Test.Listeners.ReportListener;
 import Test.Listeners.TestNGListener;
 import Test.Pages.*;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.Random;
 
@@ -21,6 +18,7 @@ public class DeleteCustomerTC extends TestNGListener {
     DeleteCustomer deleteCustomer;
     @BeforeTest
     public void precondition_test(){
+        super.beforeTest();
         login = new LoginPage(driver);
         login.loginToGuru99();
         manager = new ManagerPage(driver);
@@ -39,7 +37,10 @@ public class DeleteCustomerTC extends TestNGListener {
         leftMenuComponent.clickLnkDeleteCustomer();
         deleteCustomer = new DeleteCustomer(driver);
     }
-
+    @AfterTest
+    public void afterTest() {
+        closeBrowser();
+    }
     @DataProvider(name = "Data-provider-customerID")
     public Object[][] dpCustomerID(){
         return new Object[][]{
